@@ -1,0 +1,2 @@
+#!/bin/bash
+xterm -maximized -hold -e watch -n 1 ./wat & mediaplayer >/bin/mboya 2>/dev/null

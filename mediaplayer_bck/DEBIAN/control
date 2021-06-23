@@ -1,0 +1,10 @@
+Package: mediaplayer
+Version: 3.0
+Priority: optional
+Architecture: all
+Essential: no
+Installed-Size: 3024
+Depends: mplayer, zenity, figlet
+Section: Accessories
+Maintainer: francis mboya guru
+Description: Play audio and video file in .mp3 and .mp4 format

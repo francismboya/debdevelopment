@@ -1,0 +1,84 @@
+#!/bin/bash
+trap '
+  trap - INT # restore default INT handler
+  kill -s INT "$$"
+' INT
+
+if [ -f "$HOME/bin/mediaplayer" ];
+then
+sudo rm -f $HOME/bin/mediaplayer
+echo "old mediaplayer removed from ~/bin"
+fi
+
+if [ -f "/usr/local/bin/mediaplayer" ];
+then
+sudo rm -f /usr/local/bin/mediaplayer
+echo " old mediaplayer removed from /usr/local/bin"
+fi
+
+if [ -f "/usr/bin/mediaplayer" ];
+then
+sudo rm -f /usr/bin/mediaplayer
+echo " old mediaplayer removed from /usr/bin"
+fi
+
+if [ -f "/usr/share/icons/medi.jpg" ];
+then
+sudo rm -f /usr/share/icons/medi.jpg
+echo "old icons removed  from /usr/share/icons"
+fi
+
+if [ -f "/usr/share/applications/mediaplayer.desktop" ];
+then
+sudo rm -f /usr/share/applications/mediaplayer.desktop
+echo "old launcher removed from /usr/share/application"
+fi
+
+
+if [ -f "/usr/bin/mplayer" ] | [ -f "/bin/mplayer" ];
+then
+echo "mplayer found  installation of other dependence are progress"
+else
+echo "mplayer not found  connect to network and rerun  installion of this package"
+echo "if you are connected we create installation for you wait while"
+sudo apt-get update
+sudo apt-get install mplayer
+fi
+echo "searching for zenity"
+if [ -f "/usr/bin/zenity" ] | [ -f "/bin/zenity" ];
+then
+echo "zenity found installation of other dependence are progress"
+else
+echo "zenity not found  connect to network and rerun  installion of this package"
+#echo "if you are connected we create installation for you wait while"
+#sudo apt-get update 
+#sudo apt-get install zenity
+fi
+
+if [ -f "/usr/bin/figlet-figlet" ] | [ -f "/bin/figlet" ];
+then
+echo "dependent gui found installation of other dependence are progress"
+else
+echo "gui essential  not found  connect to network and rerun  installion of this package"
+#echo "if you are connected we create installation for you wait while"
+#sudo apt-get update 
+#sudo apt-get install  figlet
+fi
+if [ -f "/usr/bin/figlet" ] | [ -f "/bin/figlet" ];
+then
+figlet   francis guru confirmed dependence are installed
+fi
+
+echo "francis guru confirmed dependence are installed"
+
+echo  "adding excutable  configuration binary in /usr/bin"
+sudo touch /usr/bin/m2.sh
+sudo touch /usr/bin/m3.sh
+sudo touch /usr/bin/m4.sh
+echo "granting permission to file"
+sudo chmod 777 -R /usr/bin/m2.sh
+sudo chmod 777 -R /usr/bin/m3.sh
+sudo chmod 777 -R /usr/bin/m4.sh
+echo "dependency  and environment are sucessifully  created"
+ 
+

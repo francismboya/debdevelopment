@@ -1,0 +1,20 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=sublimetext
+GenericName=sublimetext
+Comment=sublime desktop
+#Exec=webapp-container --store-session-cookies --webappUrlPatterns=https?://*.whatsapp.com/* --user-agent-string='Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36' https://web.whatsapp.com %u
+Exec=/snap/bin/sublime-text.subl 
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=yetuwote
+Categories=Network;Application;
+Keywords=sublime;editor;sublimetext;
+X-Ubuntu-Gettext-Domain=sublimetext
+StartupWMClass=sublimetext.com
+
+
+
+

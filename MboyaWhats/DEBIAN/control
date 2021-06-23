@@ -1,0 +1,11 @@
+Package: MboyaWhats
+Version: 1.0
+Architecture: all
+Maintainer: francis mboya <info@francismboya.co.tz>
+Installed-Size: 781
+Depends: chromium
+Section: utility
+Priority: optional
+Homepage: http://www.francismboya.co.tz
+Description: WhatsApp Web Application
+ Launch icon for WhatsApp Web Application.

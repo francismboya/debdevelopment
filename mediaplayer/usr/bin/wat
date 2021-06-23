@@ -1,0 +1,49 @@
+#!/bin/bash
+#i=0; while sleep 0; do i=$(( $i + 1 )); echo $i; done
+# Path to the persistent storage file
+file=/bin/name.txt
+pl=/bin/pr.txt
+
+# If the persistent file exists, use its contents as name
+if [ -e "$file" ]; then
+    name=$(cat "$file")
+    name=$(($name + 1))
+    echo $name>"$file"
+else
+    # Use a default value otherwise
+    name=1
+    echo $name>"$file"
+fi
+
+echo "CURRENT PLAYING SONG" | figlet -w 8000 -f /usr/share/figlet/future.tlf 
+echo -e "\n"
+pp=$(cat /bin/mboya  | grep -i playing | tail -1 |   sed 's/.*\///')
+if [ -e "$pl" ]; then
+    ps=$(cat "$pl")
+    if [ "$pp" == "$ps" ]; then
+        echo $pp>"$pl"
+    else
+        echo $pp>"$pl"
+        ps=$(($PP))
+        name=0
+        echo $name>"$file"
+    fi
+else
+    echo "$pp">"$pl"
+fi
+echo "$ps"
+echo -e "\n"
+# If a new (non-empty) name is given, save it to the file
+if [ -n "$new_name" ]; then
+    echo "$new_name" > "$file"
+fi
+b=60
+if [ $name -ge $b ]; then
+    name2=$(($name / $b))
+    mod=$(( $name % $b ))
+    echo "DURATION: $name2 minute and $mod second"
+else
+    echo "DURATION: $name second"
+fi
+echo -e "\n"
+echo "Media player developed and managed by francis Mboya under GPL Licencing" | figlet -w 100 -f /usr/share/figlet/wideterm.tlf

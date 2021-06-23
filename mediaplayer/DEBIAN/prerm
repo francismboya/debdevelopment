@@ -1,0 +1,18 @@
+#!/bin/bash
+#figlet francis guru crying 
+
+if [ "$1" = "remove" ];
+then
+if [ -f "/usr/bin/mplayer" ] | [ -f "/bin/mplayer" ];
+then
+mplayer /usr/lib/mediaplayer-audio/removed.mp3 >/dev/null 2>&1
+fi
+fi
+
+if [ "$1" == "purge" ];
+then
+if [ -f "/usr/bin/mplayer" ] | [ -f "/bin/mplayer" ];
+then
+mplayer /usr/lib/mediaplayer-audio/purge.mp3 >/dev/null 2>&1
+fi
+fi

@@ -1,0 +1,10 @@
+Package: sublimetext
+Version: 1.0
+Architecture: all
+Maintainer: francis mboya <info@francismboya.co.tz>
+Installed-Size: 781
+Section: utility
+Priority: optional
+Homepage: http://www.francismboya.co.tz
+Description: sublime text editor
+ Launch icon for sublime text editor.

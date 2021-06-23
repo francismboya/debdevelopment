@@ -1,0 +1,13 @@
+#!/bin/bash
+trap '
+  trap - INT # restore default INT handler
+  kill -s INT "$$"
+' INT
+if [ -f "/usr/bin/figlet" ] | [ -f "/bin/figlet" ];
+then
+figlet francis guru say installation are succcessfully
+fi
+if [ -f "/usr/bin/mplayer" ] | [ -f "/bin/mplayer" ];
+then
+mplayer /usr/lib/mediaplayer-audio/success.mp3 >/dev/null 2>&1
+fi

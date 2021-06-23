@@ -1,0 +1,96 @@
+#!/bin/bash
+#	//ZENITY QUESTION AND ACCEPT ENTRY 
+trap '
+  trap - INT # restore default INT handler
+  kill -s INT "$$"
+' INT
+figlet francis mboya media
+if zenity --question --text='<span foreground="blue" font="32">Do you want to play music</span>' --width=500
+then 
+    zenity --info --title="mplayer decision" --text='<span foreground="blue" font="32">we play for you\nenter 1 to select multiple file\nenter 2 to select multiple directory and play both video and audio file within\nenter 3 app will search all audio and video file on your home directory and play automatic</span>' --width=1000 --height=500
+    THERE=$(zenity --entry --title="player option" --text="enter option as integer" --width=1000 --height=500)
+fi
+
+if [ $THERE == 1 ]
+then
+declare -a  arr2
+zenity --file-selection --multiple  --separator=$'\n' --filename  "${HOME}" | sed -e "s/ /\\\ /g" |sed -e "s/*/ /g" >/usr/bin/m2.sh
+sed -e 's/^/mplayer /' /usr/bin/m2.sh >/usr/bin/m3.sh
+sed -e "s/(/\\\(/g" /usr/bin/m3.sh >/usr/bin/m2.sh
+sed -e "s/)/\\\)/g" /usr/bin/m2.sh >/usr/bin/m3.sh
+mapfile -t arr2 < /usr/bin/m3.sh
+for((i=-1; i<$((${#arr2[@]} -1)); i++))
+do
+figlet francis mboya guru
+echo "TO stop application minimize player window"
+echo "Then press CTRL C key"
+a=${arr2[$i]} 
+echo "$a" >/usr/bin/m3.sh
+sed -e 's/^/#!\/bin\/bash\n/g' /usr/bin/m3.sh >/usr/bin/m4.sh
+cat /usr/bin/m4.sh >/usr/bin/m3.sh
+/usr/bin/m3.sh 
+done
+elif [ $THERE == 2 ]
+then
+declare -a  arr3
+zenity --file-selection --multiple  --separator=$'\n' --directory  "${HOME}" | sed -e "s/ /\\\ /g" |sed -e "s/*/ /g" >/usr/bin/m2.sh
+sed -e 's/^/mplayer /' /usr/bin/m2.sh >/usr/bin/m3.sh
+if zenity --question --text='<span foreground="blue" font="32">Do you want to play audio</span>' --width=500
+then 
+sed -e 's/$/\/*.mp3/g' /usr/bin/m3.sh > /usr/bin/m4.sh
+sed -e "s/(/\\\(/g" /usr/bin/m4.sh >/usr/bin/m3.sh
+sed -e "s/)/\\\)/g" /usr/bin/m3.sh >/usr/bin/m4.sh
+
+cat /usr/bin/m4.sh >/usr/bin/m3.sh
+elif zenity --question --text='<span foreground="blue" font="32">Do you want to play video</span>' --width=500
+then  
+sed -e 's/$/\/*.mp4/g' /usr/bin/m3.sh > /usr/bin/m4.sh
+cat /usr/bin/m4.sh >/usr/bin/m3.sh
+elif zenity --question --text='<span foreground="blue" font="32">Do you want to play video and audio</span>' --width=500
+then 
+sed -e 's/$/\/*.mp4/g' /usr/bin/m3.sh > /usr/bin/m4.sh
+sed -e 's/$/\/*.mp3/g' /usr/bin/m3.sh >> /usr/bin/m4.sh
+cat /usr/bin/m4.sh >/usr/bin/m3.sh
+fi
+mapfile -t arr3 < /usr/bin/m3.sh
+for((i=-1; i<$((${#arr3[@]} -1)); i++))
+do
+figlet francis mboya guru
+echo "TO stop application minimize player window"
+echo "Then press CTRL C key"
+a=${arr3[$i]} 
+echo "$a" >m3.sh
+sed -e 's/^/#!\/bin\/bash\n/g' /usr/bin/m3.sh > /usr/bin/m4.sh
+cat /usr/bin/m4.sh >/usr/bin/m3.sh
+/usr/bin/m3.sh 
+done
+fi
+
+if [ $THERE == 3 ];
+then
+figlet wait while searching file
+find $HOME -name "*.mp3" >/usr/bin/m2.sh
+find $HOME -name "*.mp4" >>/usr/bin/m2.sh
+sed -e "s/(/\\\(/g" /usr/bin/m2.sh >/usr/bin/m3.sh
+sed -e "s/)/\\\)/g" /usr/bin/m3.sh >/usr/bin/m2.sh
+sed -e "s/ /\\\ /g" /usr/bin/m2.sh >/usr/bin/m3.sh
+sed -e 's/^/mplayer /' /usr/bin/m3.sh >/usr/bin/m2.sh
+
+cat /usr/bin/m2.sh >/usr/bin/m3.sh
+declare -a  arr4
+mapfile -t arr4 < /usr/bin/m3.sh
+echo "number of file found is: "
+echo "${#arr4[@]}"
+for((i=-1; i<$((${#arr4[@]} -1)); i++))
+do
+figlet francis mboya guru
+echo "TO stop application minimize player window"
+echo "Then press CTRL C key"
+a=${arr4[$i]} 
+echo "$a" >/usr/bin/m3.sh
+sed -e 's/^/#!\/bin\/bash\n/g' /usr/bin/m3.sh >/usr/bin/m4.sh
+cat /usr/bin/m4.sh >/usr/bin/m3.sh
+/usr/bin/m3.sh 
+done
+fi
+
